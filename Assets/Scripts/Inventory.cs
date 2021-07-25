@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 {
     //list с имеющимися предметами
     [SerializeField] private List<Item> items = new List<Item>();
-
+    [SerializeField] private GameObject _invenroryUIPanel;
     [SerializeField] public UnityEvent OnInventoryChanged;
 
     private Item _activeItem;
@@ -37,12 +37,19 @@ public class Inventory : MonoBehaviour
     public void SetActiveItem(int index)
     {
         _activeItem = items[index];
-        Debug.Log(_activeItem.key);
+        Debug.Log("Active Key" + _activeItem.key);
     }
+
     public void UnSetActiveItem()
     {
         _activeItem = null;
+        Debug.Log("Unset active key");
+        for (int i = 0; i < _invenroryUIPanel.transform.childCount; i++)
+        {
+            _invenroryUIPanel.transform.GetChild(i).GetComponent<SlotInventoryButton>().DeactivationSlot();
+        }
     }
+
     public Item GetActiveItem()
     {
         return _activeItem;

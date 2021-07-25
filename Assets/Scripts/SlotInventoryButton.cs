@@ -13,10 +13,12 @@ public class SlotInventoryButton : MonoBehaviour
         //Проверяет наличие предмета
         if (_player.GetComponent<Inventory>().TryGetItem(transform.GetSiblingIndex()))
         {
-            if (!_clicked)
+
+
+            if (!gameObject.GetComponent<Image>().fillCenter)
             {
-                gameObject.GetComponent<Image>().fillCenter = true;
                 //Устанавливаем активный ITEM
+                gameObject.GetComponent<Image>().fillCenter = true;
                 _player.GetComponent<Inventory>().SetActiveItem(transform.GetSiblingIndex());
 
                 _clicked = true;
@@ -24,7 +26,6 @@ public class SlotInventoryButton : MonoBehaviour
             else
             {
                 gameObject.GetComponent<Image>().fillCenter = false;
-
                 _player.GetComponent<Inventory>().UnSetActiveItem();
 
                 _clicked = false;
@@ -35,5 +36,10 @@ public class SlotInventoryButton : MonoBehaviour
 
         }
         
+    }
+
+    public void DeactivationSlot()
+    {
+        gameObject.GetComponent<Image>().fillCenter = false;
     }
 }

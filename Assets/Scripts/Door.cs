@@ -12,6 +12,8 @@ public class Door : MonoBehaviour
         _baseColor = gameObject.GetComponent<MeshRenderer>().material.color;
     }
 
+    
+
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent<Inventory>(out Inventory inventory) && Input.GetKeyDown(KeyCode.E))
@@ -22,15 +24,22 @@ public class Door : MonoBehaviour
                 {
                     gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
                     inventory.DeleteItem(inventory.GetActiveItem());
+                    //Убираем активный эелемент(null)
+                    inventory.UnSetActiveItem();
 
                 }
                 else
                 {
+                    //Убираем активный эелемент(null)
+                    inventory.UnSetActiveItem();
                     StartCoroutine("ErrorKey");
                 }
             }
         }
     }
+
+    
+
 
     IEnumerator ErrorKey()
     {
