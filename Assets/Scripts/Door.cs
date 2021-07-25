@@ -32,6 +32,8 @@ public class Door : MonoBehaviour
                     //Remove active item(null)
                     //Убираем активный эелемент(null)
                     inventory.UnSetActiveItem();
+                    //Add 1 score player
+                    other.GetComponent<PlayerScore>().AddScore();
                 }
                 else //Remove active item and paint door in red
                      //Убираем активный эелемент(null)
@@ -39,8 +41,7 @@ public class Door : MonoBehaviour
                     inventory.UnSetActiveItem();
                     StartCoroutine("ErrorKey");
                 }
-                //Add 1 score player
-                other.GetComponent<PlayerScore>().AddScore();
+                
             }
 
         }
