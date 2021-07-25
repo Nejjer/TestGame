@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     //list с имеющимися предметами
     // list with available items
     [SerializeField] private List<Item> items = new List<Item>();
+    [SerializeField] private int _size = 3;
     //Get UI panel with Inventory icon
     [SerializeField] private GameObject _invenroryUIPanel;
 
@@ -21,9 +22,16 @@ public class Inventory : MonoBehaviour
     //Add item in List and Update UI
     public void AddItems(Item item)
     {
-        items.Add(item);
-        Debug.Log("Added" + item);
-        OnInventoryChanged.Invoke();
+        if (items.Count < _size)
+        {
+            items.Add(item);
+            Debug.Log("Added" + item);
+            OnInventoryChanged.Invoke();
+        }
+        else
+        {
+            Debug.Log("Inventory is FULL!!");
+        }
     }
 
     //Remove item from List and Update UI
