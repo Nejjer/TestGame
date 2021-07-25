@@ -6,30 +6,25 @@ using UnityEngine.UI;
 public class SlotInventoryButton : MonoBehaviour
 {
     [SerializeField] GameObject _player;
-    private bool _clicked = false;
 
-    public void OnClick()
+
+    public void OnClick() //Set active Item in Inventory and fill center button
     {
         //Проверяет наличие предмета
+        //Check if the item is present
         if (_player.GetComponent<Inventory>().TryGetItem(transform.GetSiblingIndex()))
         {
-
-
             if (!gameObject.GetComponent<Image>().fillCenter)
             {
-                //Устанавливаем активный ITEM
+                //Set active item in Inventory
                 gameObject.GetComponent<Image>().fillCenter = true;
                 _player.GetComponent<Inventory>().SetActiveItem(transform.GetSiblingIndex());
-
-                _clicked = true;
             }
             else
             {
-                gameObject.GetComponent<Image>().fillCenter = false;
+                //Remove active item
                 _player.GetComponent<Inventory>().UnSetActiveItem();
-
-                _clicked = false;
-
+                gameObject.GetComponent<Image>().fillCenter = false;
             }
 
 

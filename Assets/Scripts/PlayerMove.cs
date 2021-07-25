@@ -30,7 +30,8 @@ public class PlayerMove : MonoBehaviour
             float _axisZ = Input.GetAxis("Vertical") * _speed;
 
             Vector3 _dir = new Vector3(_axisX, 0, _axisZ);
-            //Limit diagonally speed Ограничиваем скокрость при движении по диагонали
+            //Ограничиваем скокрость при движении по диагонали
+            //Limit diagonally speed 
             return Vector3.ClampMagnitude(_dir, _speed);
         }
 
@@ -38,6 +39,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        //Block and UnBlock view
         if (Input.GetKeyDown(KeyCode.Tab) && !_blockView)
         {
             Cursor.lockState = CursorLockMode.None;

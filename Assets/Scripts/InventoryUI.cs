@@ -5,23 +5,25 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private List<Button> icons = new List<Button>();
+    //Get array with inventory slots(button)
+    [SerializeField] private List<Button> slots = new List<Button>();
 
+    //Размещает присутствующие ключи в инвенторе
+    // Places the keys present in the inventor
     public void UpdateUI(Inventory inventory)
     {
-        for (int i = 0; i < icons.Count; i++)
+        for (int i = 0; i < slots.Count; i++)
         {
-
             if (inventory.TryGetItem(i))
             {
-                icons[i].GetComponent<SpriteRenderer>().sprite = inventory.GetItem(i).icon;
+                //Set Icon key in inventory UI
+                slots[i].GetComponent<SpriteRenderer>().sprite = inventory.GetItem(i).icon;
                 Debug.Log(inventory.GetItem(i));
             }
             else
             {
-                Debug.Log("Try delete sprite");
-                icons[i].GetComponent<SpriteRenderer>().sprite = null;
-
+                slots[i].GetComponent<SpriteRenderer>().sprite = null;
+                Debug.Log("Delete sprite");
             }
         }
     }
