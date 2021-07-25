@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\SlotInventoryButton.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\CollectableItem.cs" />
+    <Compile Include="Assets\Scripts\PlayerScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

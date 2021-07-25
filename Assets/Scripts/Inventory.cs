@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
     public void AddItems(Item item)
     {
         items.Add(item);
+        Debug.Log("Added" + item);
         OnInventoryChanged.Invoke();
     }
 

@@ -39,7 +39,10 @@ public class Door : MonoBehaviour
                     inventory.UnSetActiveItem();
                     StartCoroutine("ErrorKey");
                 }
+                //Add 1 score player
+                other.GetComponent<PlayerScore>().AddScore();
             }
+
         }
     }
 

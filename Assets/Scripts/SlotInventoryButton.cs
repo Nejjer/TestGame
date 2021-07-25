@@ -16,6 +16,12 @@ public class SlotInventoryButton : MonoBehaviour
         {
             if (!gameObject.GetComponent<Image>().fillCenter)
             {
+                //Деактивация всех siblink слотов в UI инвенторя
+                //Deactivation ALL siblink slots in Inventory UI
+                for (int i = 0; i < transform.parent.transform.childCount; i++)
+                {
+                    transform.parent.transform.GetChild(i).GetComponent<SlotInventoryButton>().DeactivationSlot();
+                }
                 //Set active item in Inventory
                 gameObject.GetComponent<Image>().fillCenter = true;
                 _player.GetComponent<Inventory>().SetActiveItem(transform.GetSiblingIndex());

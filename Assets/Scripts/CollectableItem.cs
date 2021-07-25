@@ -15,6 +15,7 @@ public class CollectableItem : MonoBehaviour
         if (other.TryGetComponent<Inventory>(out Inventory inventory))
         {
             //Add item in Inventory and destroy
+            Debug.Log("Try get item");
             inventory.AddItems(_item);
             Destroy(gameObject);
         }
